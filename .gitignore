@@ -1,0 +1,5 @@
+.vscode/
+*.exe
+!bank.exe
+*.cpp
+!bank.cpp
