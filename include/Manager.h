@@ -1,15 +1,21 @@
-#ifndef MANEGER_H
-#define MANEGER_H
-
+#ifndef MANAGER_H
+#define MANAGER_H
 #include "../include/User.h"
 #include <vector>
 
-class manager {
-    public:
+class Manager {
+ private:
     std::vector<User*> users;
-    void userCreate(int number);
+    public:
+    std::vector<User*> &getUsers () {return users;}
+    User* getTheLastUser();
+    User& userCreate(int number);
+    void accountCreate(int number);
     void listUser();
     void removeUser();
+    void printProfiles();
+    void promt();
+    void accounts();
 };
 
 #endif

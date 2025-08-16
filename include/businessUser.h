@@ -11,6 +11,9 @@ class businessUser:public User {
     public:
     void createUser() override ;
    virtual void print() const override ;
+   void methods(int option);
+   void printAccount(Account& acc);
+   void listAccounts(std::vector<User*> &users, int number);
    void importLicenceFromFile(const std::string& filePath );  
 
 };
