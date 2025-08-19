@@ -1,6 +1,6 @@
 #ifndef MANAGER_H
 #define MANAGER_H
-#include "../include/User.h"
+#include "User.h"
 #include <vector>
 
 class Manager {
@@ -9,13 +9,18 @@ class Manager {
     public:
     std::vector<User*> &getUsers () {return users;}
     User* getTheLastUser();
-    User& userCreate(int number);
-    void accountCreate(int number);
+    User* userCreate(int number);
+    Account* accountCreate(int number);
     void listUser();
     void removeUser();
     void printProfiles();
     void promt();
-    void accounts();
+    void typeAccounts();
+    void logIN(int personalID,std::string password);
+    User* checkPass(std::string password,int personalID);
+    bool checkAccountNum(User *user,int accountNumber);
+    void userPromt ();
+    void printTrans();
 };
 
 #endif

@@ -5,8 +5,9 @@
 class User;
 
 std::string inputVal(const std::string& text);
-int digitVal   (const std::string& text);
+double digitVal   (const std::string& text);
 std :: string digstrVal (const std :: string& text);
 std :: string getCurrentTime();
-bool unique(std::vector<User*> &users,int personalID, int accountNumber);
+bool uniqueAccount(std::vector<User*> &users,int personalID, int accountNumber);
+bool uniqueUser(std::vector<User*> &users,int personalID);
 #endif

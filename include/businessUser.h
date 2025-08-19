@@ -1,6 +1,6 @@
 #ifndef BUSINESSUSER_H
 #define BUSINESSUSER_H
-#include "../include/User.h"
+#include "User.h"
 
 class businessUser:public User {
     private:
@@ -8,12 +8,13 @@ class businessUser:public User {
     int businessContact;
     int TAX;
     std :: string registrationNumber;
+
     public:
-    void createUser() override ;
-   virtual void print() const override ;
+    bool createUser(std::vector<User*> &users) override ;
+   virtual void printUsers() const override ;
    void methods(int option);
    void printAccount(Account& acc);
-   void listAccounts(std::vector<User*> &users, int number);
+   void printAccounts(User *user)const override;
    void importLicenceFromFile(const std::string& filePath );  
 
 };
