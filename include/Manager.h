@@ -18,9 +18,10 @@ class Manager {
     void typeAccounts();
     void logIN(int personalID,std::string password);
     User* checkPass(std::string password,int personalID);
-    bool checkAccountNum(User *user,int accountNumber);
+    Account* checkAccountNum(User *user,int accountNumber);
     void userPromt ();
     void printTrans();
+    void transOption();
+    void transactionProfile( Account *acc);
 };
-
 #endif

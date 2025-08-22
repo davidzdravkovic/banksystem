@@ -9,10 +9,13 @@ class Account {
     std :: string owner;
     double balance;
     int accountNumber;
+   
     std :: string accountType;
     std :: string accountTime;
     public:
-    std::vector<Transactions*> trans;
+     double transAmount;
+    std::vector<Transactions*> transInbox;
+    std::vector<Transactions*> transSent;
     std::string getAccountType() {return accountType;}
     void SetAccountType(std::string accType) {accountType=accType;}
     int getAccountNumber() {return accountNumber;}

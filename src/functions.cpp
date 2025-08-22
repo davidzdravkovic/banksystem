@@ -29,7 +29,7 @@ std::string inputVal(const std::string& text) {
 }
 
 }
-double digitVal(const std::string& text) {
+int digitVal(const std::string& text) {
     bool valid;
     std::string input;
     int number;
@@ -62,6 +62,7 @@ double digitVal(const std::string& text) {
             continue;
         }
         if(number>=0) {
+
             return number;
         }
         else{

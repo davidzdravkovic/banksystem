@@ -188,18 +188,18 @@ User* Manager :: checkPass (std::string password, int personalID) {
         return nullptr;
     }
 }
-bool Manager :: checkAccountNum(User *user, int accountNumber) {
+Account* Manager :: checkAccountNum(User *user, int accountNumber) {
     
     for(int i=0; i<user->getAccounts().size(); i++) {
         if(user->getAccounts()[i]->getAccountNumber()==accountNumber)
         {
-            return true;
+            return user->getAccounts()[i];
         }
     }
   
     
   std::cout<<"Account with this number does not exist!"<<std::endl;
-  return false;
+  return nullptr;
     
 
 }
@@ -210,5 +210,33 @@ void Manager :: userPromt() {
 void Manager :: printTrans() {
     std::cout<<"1.Create transaction"<<std::endl;
     std::cout<<"2.View transactions"<<std::endl;
+
+}
+void Manager :: transOption() {
+    std::cout<<"1.Inbox "<<std::endl;
+    std::cout<<"2.sent "<<std::endl;
+    
+
+}
+ void Manager :: transactionProfile( Account *acc) {
+    int transNumber=digitVal("Enter transaction number: ");
+    for(int i=0; i<acc->transInbox.size(); i++) {
+        if(acc->transInbox[i]->transactionNumber==transNumber) {
+         std :: cout<<"Sent request from user: "<< acc->transInbox[i]->sender<<"."<<std::endl;
+         if (acc->transInbox[i]->transactionType==2) {
+          std::cout<<"Asking for amount: "<<acc->transInbox[i]->amount<<std::endl;
+        
+          
+            
+         }
+         if(acc->transInbox[i]->transactionType==1) {
+               std::cout<<"sending a: "<<acc->transInbox[i]->amount<<std::endl;
+              acc->transAmount=acc->transInbox[i]->amount;
+          
+         }
+        }
+    }
+   
+    
 
 }

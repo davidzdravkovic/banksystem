@@ -71,7 +71,7 @@
             std::cout<<"Account type: "<<user->getAccounts()[i]->getAccountType()<<"       "<<"1.Deposit"<<std::endl;
             std::cout<<"Owner name: "<<user->getAccounts()[i]->getOwnerName()<<"                    "<<"2.Withdraw"<<std::endl;
             std::cout<<std::endl;                                
-            std::cout<<"Balance: "<<user->getAccounts()[i]->getBalance()<<"   "<<"3.Transactions"<<std::endl;
+            std::cout<<"Balance: "<<user->getAccounts()[i]->getBalance()<<"                "<<"3.Transactions"<<std::endl;
             std::cout<<"Date of creation:"<<user->getAccounts()[i]->getAccountTime()<<"   "<<"4.Exit"<<std::endl;
      }
      else {

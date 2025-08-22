@@ -3,16 +3,26 @@
 #include <string>
 class User;
 class Manager;
+class Account;
+
 class Transactions {
     public:
+    int accountNumber;
+    int indetification;
+    int transactionType;
     std::string sender;
-    int receiverID;
-    int receiverAccNum;
+    std::string receiver;
+    double amount1;
+    int transactionNumber;
+    std::string date;
     double amount;
-    void creatTrans(User *user,int personalID,int accountNumber,int sum,Manager &manager);
-    void history(User *user);
-    void decide(User *user);
-
-
+    std::string transStatus;
+    Transactions*createTrans(Manager &manager,Account *acc,User *user);
+    void printSent(Account *acc);
+    void printInbox(Account *acc);
+    void decision(Manager &manager, Account *acc,Transactions*trans);
+    
+    
+    
 };
 #endif
