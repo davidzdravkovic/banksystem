@@ -95,7 +95,7 @@ void Transactions :: decision(Manager &manager, Account *acc,Transactions* trans
             if(trans->transactionType==1) {
             manager.getUsers()[i]->getAccounts()[j]->setBalanceWith(trans->amount);
             acc->setBalanceDepo(trans->amount);
-            delete trans;
+            
             }
              if(trans->transactionType==2) {
                  manager.getUsers()[i]->getAccounts()[j]->setBalanceDepo(trans->amount);
