@@ -1006,3 +1006,33 @@ button.btn-decline {
   from { opacity: 1; }
   to { opacity: 0; }
 }
+.header-normal {
+  font-weight: 600; /* semi-bold */
+  color: #333;     /* dark gray */
+  font-size: 18px; /* adjust as needed */
+  margin: 0;       /* optional */
+}
+.empty-message {
+  text-align: center;       /* Center the message */
+  font-size: 18px;          /* Adjust size as needed */
+  color: #888;              /* Subtle gray color */
+  margin: 20px 0;           /* Space above and below */
+  font-style: italic;       /* Optional: italic for softer look */
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+}

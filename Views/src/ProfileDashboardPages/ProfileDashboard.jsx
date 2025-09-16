@@ -32,6 +32,14 @@ const [inboxTransactions, setInboxTransactions] = useState([]);
 const [sentTransactions, setSentTransactions] = useState([]);
 const [transactionHistory, setTransactionHistory] =useState([]);
 
+const [loadingInbox, setLoadingInbox] = useState(false);
+const [loadingSent, setLoadingSent] = useState(false);
+const [transactionToDelete, setTransactionToDelete] = useState(null);
+
+  const [transactionToConfirm, setTransactionToConfirm] = useState(null);
+  const [actionType, setActionType] = useState(null); // "accept" or "decline"
+  const [pending, setPending] = useState(false);
+
 
 
 
@@ -130,6 +138,8 @@ catch(err) {
 }
 const handleSentGet = async () => {
 
+   setLoadingSent(true);
+
   const sentUrl=`http://localhost:8080/transaction?accountNumber=${enteredAccountNumber}&type=sent`
   try {const controller=new AbortController();
    const timeoutId = setTimeout(() => controller.abort(), 5000);
@@ -139,7 +149,12 @@ const handleSentGet = async () => {
     signal: controller.signal
   }); 
   clearTimeout(timeoutId);
+
+
   const data= await respons.json();
+
+  setSentTransactions(data);
+  setLoadingSent(false);
 
   if(data.status === true) {
       setSentTransactions(data.transactions);
@@ -187,7 +202,7 @@ catch(err) {
 
 
 const handleTransaction = async (e) => {
-  setSubPanel("")
+  setSubPanel(null)
   e.preventDefault();
   try {
     const controller=new AbortController();
@@ -258,14 +273,7 @@ function transactionType(type) {
           return selectedType;
   }
 }
-const handleSubPanel = (panel) => {
-  setSubPanel(panel);
-  setDepositAmount(0);
-  setWithdrawAmount(0);
-  setTransactionSum("");
-  setTypeTransaction("");
-  setToAccount("");
-};
+
 
 
  const navigate1 = useNavigate();
@@ -367,7 +375,7 @@ const [selectedTransaction, setSelectedTransaction] = useState(null);
 
 const handleDeposit = async (e) => {
     e.preventDefault(); // stop form reload
-    setSubPanel("")
+    setSubPanel(null)
    const depositUrl = `http://localhost:8080/deposit?accountNumber=${enteredAccountNumber}`;
 try {
   const controller=new AbortController();
@@ -401,7 +409,7 @@ catch(err) {
 const handleWithdraw = async (e) => {
 
     e.preventDefault(); // stop form reload
-    setSubPanel("")
+    setSubPanel(null)
 
     const withdrawUrl = `http://localhost:8080/withdraw?accountNumber=${enteredAccountNumber}`;
 try {
@@ -508,147 +516,174 @@ const handleDisplay =(activePanel)=> {
   setPanel(activePanel);
 
 }
-  return (
-    
+return (
   <div className="dashboard-container">
-    <div className="dashboard-wrapper">
-      {notification && (
-  <Notification
-    message={notification.message}
-    type={notification.type}
-    onClose={() => setNotification(null)}
-  />
-)}
-      <nav className="navbar_menu">
-        <div className="navbar-left">
-          <span className="user-name">Profile type: {userType}</span>
-          <span className="user-id">Personal ID: {userId}</span>
-        </div>
-        <div className="navbar-right">
-          <button className="logout-button" onClick={handleAction}>Log Out</button>
-        </div>
-      </nav>
+  <div className="dashboard-wrapper">
+    {notification && (
+      <Notification
+        message={notification.message}
+        type={notification.type}
+        onClose={() => setNotification(null)}
+      />
+    )}
 
-      <div className="dashBoard">
-        <div className="left_menu">
-          <button className="account-button" onClick={() => handleDisplay("createAccount")}>Create Account</button>
-          <button className="search-button" onClick={handleSearchAccount}>Search Account</button>
-        </div>
+    <nav className="navbar_menu">
+      <div className="navbar-left">
+        <span className="user-name">Profile type: {userType}</span>
+        <span className="user-id">Personal ID: {userId}</span>
+      </div>
+      <div className="navbar-right">
+        <button className="logout-button" onClick={handleAction}>Log Out</button>
+      </div>
+    </nav>
 
-        <div className="main_view">
-          {activePanel === "yes" && (
-            <section className="account-profile-section">
-              <div className="account-profile">
-                <h2>Account Profile</h2>
-                <div className="account-info">
-                  <p><strong>Account Number:</strong> {enteredAccountNumber}</p>
-                  <p><strong>Account Type:</strong> {getCurrentAccountType(selectedType)}</p>
-                  <p><strong>Balance:</strong> <weak>$</weak>{ balance}</p>
-                </div>
+    <div className="dashBoard">
+      <div className="left_menu">
+        <button className="account-button" onClick={() => handleDisplay("createAccount")}>Create Account</button>
+        <button className="search-button" onClick={handleSearchAccount}>Search Account</button>
+      </div>
 
-                <div className="actions">
-                  <button className="btn" onClick={() => setSubPanel("deposit")}>💰 Deposit Money</button>
-                  {activeSubPanel === "deposit" && (
-                   <Deposit
-                  depositAmount={depositAmount}
-                  setDepositAmount={setDepositAmount}
-                  handleDeposit={handleDeposit}
-                  setSubPanel={setSubPanel}/>
-                  )}
+      <div className="main_view">
+        {activePanel === "yes" && (
+          <section className="account-profile-section">
+            <div className="account-profile">
+              <h2>Account Profile</h2>
+              <div className="account-info">
+                <p><strong>Account Number:</strong> {enteredAccountNumber}</p>
+                <p><strong>Account Type:</strong> {getCurrentAccountType(selectedType)}</p>
+                <p><strong>Balance:</strong> <weak>$</weak>{balance}</p>
+              </div>
 
-                  <button className="btn" onClick={() => setSubPanel("withdraw")}>🏧 Withdraw Money</button>
-                  {activeSubPanel === "withdraw" && (
-                   <Withdraw 
-                   withdrawAmount={withdrawAmount}
-                   setWithdrawAmount={setWithdrawAmount}
-                   handleWithdraw={handleWithdraw}
-                   setSubPanel={setSubPanel}
-                    />
-                  )}
+              <div className="actions">
+                {/* Show buttons only if no subpanel is active */}
+                {activeSubPanel === null && (
+                  <>
+                    <button className="btn" onClick={() => setSubPanel("deposit")}>💰 Deposit Money</button>
+                    <button className="btn" onClick={() => setSubPanel("withdraw")}>🏧 Withdraw Money</button>
+                    <button className="btn" onClick={() => setSubPanel("createTrans")}>🔄 Create Transaction</button>
+                    <button className="btn" onClick={() => setSubPanel("transactions")}>📜 Transactions</button>
+                    <button className="btn" onClick={async () => { await handleHistory(); setSubPanel("transactionsHistory")}}>📜 Transaction History</button>
+                  </>
+                )}
 
-                  <button className="btn" onClick={() => setSubPanel("createTrans")}>🔄 Create Transaction</button>
-                  {activeSubPanel === "createTrans" && (
-                   <CreateTransaction
-                   toAccount={toAccount}
-                   setToAccount={setToAccount}
-                   transactionSum={transactionSum}
-                   setTransactionSum={setTransactionSum}
-                   setTypeTransaction={setTypeTransaction}
-                   typeTransaction={typeTransaction}
-                   setSubPanel={setSubPanel}
-                   handleTransaction={handleTransaction}
-                   />
-                  )}
+                {/* Render only the active subpanel */}
+                {activeSubPanel === "deposit" && (
+                  <Deposit
+                    depositAmount={depositAmount}
+                    setDepositAmount={setDepositAmount}
+                    handleDeposit={handleDeposit}
+                    setSubPanel={setSubPanel}
+                  />
+                )}
 
-                  <button className="btn" onClick={() => setSubPanel("transactions")}>📜 Transactions</button>
-                  {activeSubPanel === "transactions" && (
-               <Transaction
-               setTransactionsView={setTransactionsView}
-               handleInboxGet={handleInboxGet}
-               handleSentGet={handleSentGet}
-               inboxTransactions={inboxTransactions}
-               sentTransactions={sentTransactions}
-               handleAccept={handleAccept}
-               handleDecline={handleDecline}
-               setSubPanel={setSubPanel}
-               transactionType={transactionType}
-               transactionsView={transactionsView}  
-               />
-                  )}
-                  <button className="btn" onClick={ async() =>  { await handleHistory();  setSubPanel("transactionsHistory")}}>📜 Transaction History</button>
-                 {activeSubPanel === "transactionsHistory" && (
-                 transactionHistory.length > 0 ?(
-                             <TransactionHistory
-                             transactionHistory={transactionHistory}
-                             handleDelete={handleDelete}
-                             transactionType={transactionType}
-                             />
-                 ): (<p>No transaction history</p>)
-                            )}
-                         </div>
-                        </div>
-                      </section>
-                          )}
-          {activePanel === null && (
-            <div className="main-default">
-              <h2>Welcome!</h2>
-              <p>Choose an option from the menu on the left to get started.</p>
-              <img src={bankLogo} alt="Main Menu Guide" className="menuGuideImg" />
+                {activeSubPanel === "withdraw" && (
+                  <Withdraw
+                    withdrawAmount={withdrawAmount}
+                    setWithdrawAmount={setWithdrawAmount}
+                    handleWithdraw={handleWithdraw}
+                    setSubPanel={setSubPanel}
+                  />
+                )}
+
+                {activeSubPanel === "createTrans" && (
+                  <CreateTransaction
+             toAccount={toAccount}
+             setToAccount={setToAccount}
+             transactionSum={transactionSum}
+             setTransactionSum={setTransactionSum}
+             typeTransaction={typeTransaction}
+             setTypeTransaction={setTypeTransaction}
+             setSubPanel={setSubPanel}
+             handleTransaction={handleTransaction}
+             pending={pending}
+             setPending={setPending}
+                  />
+                )}
+
+                {activeSubPanel === "transactions" && (
+                 <Transaction
+                 setTransactionsView={setTransactionsView}
+                 handleInboxGet={handleInboxGet}
+                 handleSentGet={handleSentGet}
+                 inboxTransactions={inboxTransactions}
+                 sentTransactions={sentTransactions}
+                 handleAccept={handleAccept}
+                 handleDecline={handleDecline}
+                 setSubPanel={setSubPanel}
+                 transactionType={transactionType}
+                 transactionsView={transactionsView}  
+                 loadingSent={loadingSent}
+                 transactionToConfirm={transactionToConfirm}
+                 setTransactionToConfirm={setTransactionToConfirm}
+                 actionType={actionType}
+                 setActionType={setActionType}
+            />
+
+                )}
+
+                {activeSubPanel === "transactionsHistory" && (
+                  transactionHistory.length > 0 ? (
+                    <TransactionHistory
+                      transactionHistory={transactionHistory}
+                      handleDelete={handleDelete}
+                      transactionType={transactionType}
+                       setSubPanel={setSubPanel}
+                       setTransactionToDelete={setTransactionToDelete}
+                       transactionToDelete={transactionToDelete}
+                          />
+                            
+                    
+                  ) : (
+               <div>
+             <p className="empty-message">📝 No transaction history</p>
+             <button className="btn" onClick={() => setSubPanel(null)}>Back</button>
+             </div>
+                  )
+                )}
+              </div>
             </div>
-          )}
+          </section>
+        )}
 
-          {activePanel === "createAccount" && (
-           
-             <CreateAccount
-             enteredAccountNumber={enteredAccountNumber}
-             handleLogin={handleLogin}
-             setEnterID={setEnterID}
-             selectedType={selectedType}
-             setType={setType}
-             />
-          )}
+        {activePanel === null && (
+          <div className="main-default">
+            <h2>Welcome!</h2>
+            <p>Choose an option from the menu on the left to get started.</p>
+            <img src={bankLogo} alt="Main Menu Guide" className="menuGuideImg" />
+          </div>
+        )}
 
-          {activePanel === "searchAccounts" && (
-            <section className="accounts-section">
-              <h2>Your Accounts</h2>
-              {accounts && accounts.length > 0 ? (
-             <SearchAccount
-              accounts={accounts}
-              handleOpenProfile={handleOpenProfile}
-              getAccountType={getAccountType}
+        {activePanel === "createAccount" && (
+          <CreateAccount
+            enteredAccountNumber={enteredAccountNumber}
+            handleLogin={handleLogin}
+            setEnterID={setEnterID}
+            selectedType={selectedType}
+            setType={setType}
+          />
+        )}
+
+        {activePanel === "searchAccounts" && (
+          <section className="accounts-section">
+            <h2>Your Accounts</h2>
+            {accounts && accounts.length > 0 ? (
+              <SearchAccount
+                accounts={accounts}
+                handleOpenProfile={handleOpenProfile}
+                getAccountType={getAccountType}
               />
-              ) : (
-                <p>No accounts found.</p>
-              )}
-            </section>
-          )}
-        </div> {/* end of main_view */}
+            ) : (
+              <p>No accounts found.</p>
+            )}
+          </section>
+        )}
+      </div> {/* end of main_view */}
 
-        <div className="right_menu">
-          <img src={profilImage} alt="profile picture"/>
-          <span className="profile-type">{userName}</span>
-        </div>
-      </div> {/* end of dashBoard */}
-    </div> {/* end of dashboard-wrapper */}
-  </div> /* end of dashboard-container */
-)};
+      <div className="right_menu">
+        <img src={profilImage} alt="profile picture"/>
+        <span className="profile-type">{userName}</span>
+      </div>
+    </div> 
+  </div> 
+</div> 
+);};

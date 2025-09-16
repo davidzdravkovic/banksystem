@@ -9,7 +9,7 @@ import React from "react";
                       <form onSubmit={handleDeposit}>
                         <input type="number" value={depositAmount} required onChange={(e) => setDepositAmount(e.target.value)} />
                         <button type="submit">Submit</button>
-                         <button className="btn" onClick={() => setSubPanel("")}>Close</button>
+                         <button className="btn" onClick={() => setSubPanel(null)}>Close</button>
                       </form>
                     </div>
    );
@@ -20,7 +20,7 @@ return  (<div className="withdraw-panel">
                       <form onSubmit={handleWithdraw}>
                         <input type="number" value={withdrawAmount} onChange={(e) => setWithdrawAmount(e.target.value)} />
                         <button type="submit">Submit</button>
-                         <button className="btn" onClick={() => setSubPanel("")}>Close</button>
+                         <button className="btn" onClick={() => setSubPanel(null)}>Close</button>
                       </form>
                     </div>
 );};
