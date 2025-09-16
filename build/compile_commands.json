@@ -1,0 +1,110 @@
+[
+{
+  "directory": "C:/Users/User/banksystem/build",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe -D_WIN32_WINNT=0x0601 -IC:/Users/User/banksystem/include -isystem C:/drogon_install/include -g -std=c++17 -o CMakeFiles\\BankSystem.dir\\src\\AdminUser.cpp.obj -c C:\\Users\\User\\banksystem\\src\\AdminUser.cpp",
+  "file": "C:/Users/User/banksystem/src/AdminUser.cpp",
+  "output": "C:/Users/User/banksystem/build/CMakeFiles/BankSystem.dir/src/AdminUser.cpp.obj"
+},
+{
+  "directory": "C:/Users/User/banksystem/build",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe -D_WIN32_WINNT=0x0601 -IC:/Users/User/banksystem/include -isystem C:/drogon_install/include -g -std=c++17 -o CMakeFiles\\BankSystem.dir\\src\\CheckingAccount.cpp.obj -c C:\\Users\\User\\banksystem\\src\\CheckingAccount.cpp",
+  "file": "C:/Users/User/banksystem/src/CheckingAccount.cpp",
+  "output": "C:/Users/User/banksystem/build/CMakeFiles/BankSystem.dir/src/CheckingAccount.cpp.obj"
+},
+{
+  "directory": "C:/Users/User/banksystem/build",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe -D_WIN32_WINNT=0x0601 -IC:/Users/User/banksystem/include -isystem C:/drogon_install/include -g -std=c++17 -o CMakeFiles\\BankSystem.dir\\src\\CreditAccount.cpp.obj -c C:\\Users\\User\\banksystem\\src\\CreditAccount.cpp",
+  "file": "C:/Users/User/banksystem/src/CreditAccount.cpp",
+  "output": "C:/Users/User/banksystem/build/CMakeFiles/BankSystem.dir/src/CreditAccount.cpp.obj"
+},
+{
+  "directory": "C:/Users/User/banksystem/build",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe -D_WIN32_WINNT=0x0601 -IC:/Users/User/banksystem/include -isystem C:/drogon_install/include -g -std=c++17 -o CMakeFiles\\BankSystem.dir\\src\\Manager.cpp.obj -c C:\\Users\\User\\banksystem\\src\\Manager.cpp",
+  "file": "C:/Users/User/banksystem/src/Manager.cpp",
+  "output": "C:/Users/User/banksystem/build/CMakeFiles/BankSystem.dir/src/Manager.cpp.obj"
+},
+{
+  "directory": "C:/Users/User/banksystem/build",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe -D_WIN32_WINNT=0x0601 -IC:/Users/User/banksystem/include -isystem C:/drogon_install/include -g -std=c++17 -o CMakeFiles\\BankSystem.dir\\src\\SavingAccount.cpp.obj -c C:\\Users\\User\\banksystem\\src\\SavingAccount.cpp",
+  "file": "C:/Users/User/banksystem/src/SavingAccount.cpp",
+  "output": "C:/Users/User/banksystem/build/CMakeFiles/BankSystem.dir/src/SavingAccount.cpp.obj"
+},
+{
+  "directory": "C:/Users/User/banksystem/build",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe -D_WIN32_WINNT=0x0601 -IC:/Users/User/banksystem/include -isystem C:/drogon_install/include -g -std=c++17 -o CMakeFiles\\BankSystem.dir\\src\\Transactions.cpp.obj -c C:\\Users\\User\\banksystem\\src\\Transactions.cpp",
+  "file": "C:/Users/User/banksystem/src/Transactions.cpp",
+  "output": "C:/Users/User/banksystem/build/CMakeFiles/BankSystem.dir/src/Transactions.cpp.obj"
+},
+{
+  "directory": "C:/Users/User/banksystem/build",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe -D_WIN32_WINNT=0x0601 -IC:/Users/User/banksystem/include -isystem C:/drogon_install/include -g -std=c++17 -o CMakeFiles\\BankSystem.dir\\src\\businessUser.cpp.obj -c C:\\Users\\User\\banksystem\\src\\businessUser.cpp",
+  "file": "C:/Users/User/banksystem/src/businessUser.cpp",
+  "output": "C:/Users/User/banksystem/build/CMakeFiles/BankSystem.dir/src/businessUser.cpp.obj"
+},
+{
+  "directory": "C:/Users/User/banksystem/build",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe -D_WIN32_WINNT=0x0601 -IC:/Users/User/banksystem/include -isystem C:/drogon_install/include -g -std=c++17 -o CMakeFiles\\BankSystem.dir\\src\\controllers\\AccountCreateController.cpp.obj -c C:\\Users\\User\\banksystem\\src\\controllers\\AccountCreateController.cpp",
+  "file": "C:/Users/User/banksystem/src/controllers/AccountCreateController.cpp",
+  "output": "C:/Users/User/banksystem/build/CMakeFiles/BankSystem.dir/src/controllers/AccountCreateController.cpp.obj"
+},
+{
+  "directory": "C:/Users/User/banksystem/build",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe -D_WIN32_WINNT=0x0601 -IC:/Users/User/banksystem/include -isystem C:/drogon_install/include -g -std=c++17 -o CMakeFiles\\BankSystem.dir\\src\\controllers\\AccountSearchController.cpp.obj -c C:\\Users\\User\\banksystem\\src\\controllers\\AccountSearchController.cpp",
+  "file": "C:/Users/User/banksystem/src/controllers/AccountSearchController.cpp",
+  "output": "C:/Users/User/banksystem/build/CMakeFiles/BankSystem.dir/src/controllers/AccountSearchController.cpp.obj"
+},
+{
+  "directory": "C:/Users/User/banksystem/build",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe -D_WIN32_WINNT=0x0601 -IC:/Users/User/banksystem/include -isystem C:/drogon_install/include -g -std=c++17 -o CMakeFiles\\BankSystem.dir\\src\\controllers\\TransactionController.cpp.obj -c C:\\Users\\User\\banksystem\\src\\controllers\\TransactionController.cpp",
+  "file": "C:/Users/User/banksystem/src/controllers/TransactionController.cpp",
+  "output": "C:/Users/User/banksystem/build/CMakeFiles/BankSystem.dir/src/controllers/TransactionController.cpp.obj"
+},
+{
+  "directory": "C:/Users/User/banksystem/build",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe -D_WIN32_WINNT=0x0601 -IC:/Users/User/banksystem/include -isystem C:/drogon_install/include -g -std=c++17 -o CMakeFiles\\BankSystem.dir\\src\\controllers\\WithDepoController.cpp.obj -c C:\\Users\\User\\banksystem\\src\\controllers\\WithDepoController.cpp",
+  "file": "C:/Users/User/banksystem/src/controllers/WithDepoController.cpp",
+  "output": "C:/Users/User/banksystem/build/CMakeFiles/BankSystem.dir/src/controllers/WithDepoController.cpp.obj"
+},
+{
+  "directory": "C:/Users/User/banksystem/build",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe -D_WIN32_WINNT=0x0601 -IC:/Users/User/banksystem/include -isystem C:/drogon_install/include -g -std=c++17 -o CMakeFiles\\BankSystem.dir\\src\\controllers\\logginController.cpp.obj -c C:\\Users\\User\\banksystem\\src\\controllers\\logginController.cpp",
+  "file": "C:/Users/User/banksystem/src/controllers/logginController.cpp",
+  "output": "C:/Users/User/banksystem/build/CMakeFiles/BankSystem.dir/src/controllers/logginController.cpp.obj"
+},
+{
+  "directory": "C:/Users/User/banksystem/build",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe -D_WIN32_WINNT=0x0601 -IC:/Users/User/banksystem/include -isystem C:/drogon_install/include -g -std=c++17 -o CMakeFiles\\BankSystem.dir\\src\\controllers\\signupController.cpp.obj -c C:\\Users\\User\\banksystem\\src\\controllers\\signupController.cpp",
+  "file": "C:/Users/User/banksystem/src/controllers/signupController.cpp",
+  "output": "C:/Users/User/banksystem/build/CMakeFiles/BankSystem.dir/src/controllers/signupController.cpp.obj"
+},
+{
+  "directory": "C:/Users/User/banksystem/build",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe -D_WIN32_WINNT=0x0601 -IC:/Users/User/banksystem/include -isystem C:/drogon_install/include -g -std=c++17 -o CMakeFiles\\BankSystem.dir\\src\\functions.cpp.obj -c C:\\Users\\User\\banksystem\\src\\functions.cpp",
+  "file": "C:/Users/User/banksystem/src/functions.cpp",
+  "output": "C:/Users/User/banksystem/build/CMakeFiles/BankSystem.dir/src/functions.cpp.obj"
+},
+{
+  "directory": "C:/Users/User/banksystem/build",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe -D_WIN32_WINNT=0x0601 -IC:/Users/User/banksystem/include -isystem C:/drogon_install/include -g -std=c++17 -o CMakeFiles\\BankSystem.dir\\src\\main.cpp.obj -c C:\\Users\\User\\banksystem\\src\\main.cpp",
+  "file": "C:/Users/User/banksystem/src/main.cpp",
+  "output": "C:/Users/User/banksystem/build/CMakeFiles/BankSystem.dir/src/main.cpp.obj"
+},
+{
+  "directory": "C:/Users/User/banksystem/build",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe -D_WIN32_WINNT=0x0601 -IC:/Users/User/banksystem/include -isystem C:/drogon_install/include -g -std=c++17 -o CMakeFiles\\BankSystem.dir\\src\\menu.cpp.obj -c C:\\Users\\User\\banksystem\\src\\menu.cpp",
+  "file": "C:/Users/User/banksystem/src/menu.cpp",
+  "output": "C:/Users/User/banksystem/build/CMakeFiles/BankSystem.dir/src/menu.cpp.obj"
+},
+{
+  "directory": "C:/Users/User/banksystem/build",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe -D_WIN32_WINNT=0x0601 -IC:/Users/User/banksystem/include -isystem C:/drogon_install/include -g -std=c++17 -o CMakeFiles\\BankSystem.dir\\src\\personalUser.cpp.obj -c C:\\Users\\User\\banksystem\\src\\personalUser.cpp",
+  "file": "C:/Users/User/banksystem/src/personalUser.cpp",
+  "output": "C:/Users/User/banksystem/build/CMakeFiles/BankSystem.dir/src/personalUser.cpp.obj"
+},
+{
+  "directory": "C:/Users/User/banksystem/build",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe -D_WIN32_WINNT=0x0601 -IC:/Users/User/banksystem/include -isystem C:/drogon_install/include -g -std=c++17 -o CMakeFiles\\BankSystem.dir\\src\\studentUser.cpp.obj -c C:\\Users\\User\\banksystem\\src\\studentUser.cpp",
+  "file": "C:/Users/User/banksystem/src/studentUser.cpp",
+  "output": "C:/Users/User/banksystem/build/CMakeFiles/BankSystem.dir/src/studentUser.cpp.obj"
+}
+]

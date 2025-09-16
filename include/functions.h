@@ -1,8 +1,9 @@
 #ifndef INPUTHANDLER_H
 #define INPUTHANDLER_H
+#include "User.h"
 #include <vector>
 #include <string>
-class User;
+
 
 std::string inputVal(const std::string& text);
 int digitVal   (const std::string& text);

@@ -8,65 +8,115 @@
 #include <iostream>
 
 
-bool businessUser::createUser(std::vector<User*> &users) 
-{     std :: string path;
-      int temp;
-      bool unique=false;
-      fullName=inputVal("Enter your full name: ");
-      while (true) {
-      temp=digitVal("Enter your personalID: ");
-      unique=uniqueUser(users,temp);
-    
-      if (!unique) {
-        std::cout<<"Not unique personalID!"<<std::endl;
-        int option=digitVal("Enter 0 to exit 1 to retry: ");
-        if(option==0) {
-          std::cout<<"User not created!"<<std::endl;
-          return false;
-        }
-        else if(option==1) {
-          continue;
-        }
-      }
-     if(unique) {
-        break;
-      }
-      
+bool businessUser::createUser(pqxx::connection &conn,std::shared_ptr<User> user) 
+{  
+   auto bUser=std::dynamic_pointer_cast<businessUser>(user);
+   if (!bUser) {
+    std::cerr << "Error: User is not a BusinessUser!" << std::endl;
+    return false;
+}
+   std::string fullName;
+   long long personalID;
+   std::string password;
+   std::string address;
+   std::string path;
+   int contact;
+
+  fullName=bUser->fullName;
+while (true) {
+   personalID=bUser->personalID;
+   pqxx::work txn(conn);
+   pqxx::result r=txn.exec("Select personal_id from business_users where personal_id=" +txn.quote(personalID) +";");
+   
+   if(!r.empty()) {
+   
+                return false;
+  
+}
+
+else {
+  break;
+}
+}
+    try {
+    pqxx::work txn(conn);
+    pqxx::result r=txn.exec("INSERT into users (personal_id,user_type,full_name) VALUES ("+txn.quote(bUser->personalID)+","+txn.quote("Business_User")+","+txn.quote(fullName)+");");
+    pqxx::result r1=txn.exec("INSERT into business_users (personal_id,full_name,user_type, password,business_contact,business_address) VALUES "
+    "("+txn.quote(bUser->personalID)+","+txn.quote(fullName)+","+txn.quote("Business_User")+","+txn.quote(bUser->password)+","+txn.quote(bUser->businessContact)+","
+    +txn.quote(bUser->businessAddress)+");");
+    txn.commit();
     }
-  
-  
-      
-      personalID=temp;
-      password=digstrVal("Enter your password: ");
-      businessContact=digitVal("Enter company contact: ");
-      businessAddress=digstrVal("Enter company address: ");
-      path=digstrVal("Enter your file path for register number: ");
-      importLicenceFromFile(path);
-      return true;
-      
-  }
-        //std::cout<<"Not unique personalID!"<<std::endl;
-       // return false;
+    catch (const pqxx::sql_error &e) {
+      std::cerr << "SQL error: "<<e.what()<<std::endl;
+      std::cerr << "Query error: "<<e.query()<<std::endl;
+      return false;
 
-  
+    }
+    catch (const std::exception &e) {
+      std::cerr <<"Error: "<<e.what()<<std::endl;
+      return false;
+    }
+    return true;
 
-void businessUser::printUsers() const {
-        std::cout << "Full name: " << fullName << "  "
-                  << "Personal ID: " << personalID << "  "
-                  << "Contact: " << businessAddress << "  "
-                  << "Address: " << businessContact << std::endl; 
-                  std::cout<<std::endl;
+}
+void businessUser::printUsers(pqxx::connection &conn) const {
+  std::cout<<"PRINT PROFILE"<<std::endl;
+  std::cout<<"PERSONAL ID: "<<this->getPersonalID()<<std::endl;
+       try {
+       pqxx::work txn(conn);
+       pqxx::result r=txn.exec("SELECT full_name,password,personal_id,business_address,business_contact,register_number "
+                               "FROM business_users WHERE personal_id="+ txn.quote(this->getPersonalID())+";");
+          if(r.empty()) {
+            std::cout<<"The table is empty!"<<std::endl;
+            return;
+          }
+        for(int i=0; i<r.size(); i++) {
+          std::cout<<"Full name: "<<r[i]["full_name"].c_str()<<std::endl;
+          std::cout<<"Personal ID: "<<r[i]["personal_id"].as<long long>()<<std::endl;
+          std::cout<<"Contact: "<<r[i]["business_contact"].as<long long>()<<std::endl;
+          std::cout<<"Address: "<<r[i]["business_address"].c_str()<<std::endl; 
+          std::cout<<std::endl;
                   std::cout<<"1.Create Account"<<std::endl;
                   std::cout<<"2.Search for account"<<"        ";
                   std::cout<<"3.Log Out"<<std::endl;
-            
-               
+         }
+         txn.commit();
+       }
+       catch(pqxx::sql_error &e){
+        std::cerr<<"SQL error: "<<e.what()<<std::endl;
+        std::cerr<<"Querie error: "<<e.query()<<std::endl;
+        return;
+       }
+       catch(std::exception &e) {
+        std::cerr<<"Error: "<<e.what()<<std::endl;
+        return;
+       }
+       
     }
-  void businessUser::printAccounts(User *user) const {
-    for(int i=0; i<user->getAccounts().size();i++)
-    std::cout<<user->getAccounts()[i]->getAccountNumber()<<std::endl;
+  void businessUser::printAccounts(pqxx::connection &conn) const {
+    try{
+      pqxx::work txn(conn);
+      pqxx::result r=txn.exec("SELECT account_number,account_type FROM ONLY accounts WHERE personal_id=$1",this->getPersonalID());
+      if(r.empty()) {
+        std::cout<<"No accounts created!"<<std::endl;
+        return;
+      }
+      for(int i=0; i<r.size(); i++) {
+       int accountNumber=r[i]["account_number"].as<int>();
+       std::string type=r[i]["account_type"].as<std::string>();
+       std::cout<<i+1<<"."<<" Account type: "<<type<<"."<<"Account number: "<<accountNumber<<std::endl;
+    }
+    
   }
-
+  catch(pqxx::sql_error &e) {
+    std::cerr<<"SQL error: "<<e.what()<<std::endl;
+    std::cerr<<"Query error: "<<e.query()<<std::endl; 
+  }
+  catch(std::exception &e) {
+    std::cerr<<"Error: "<<e.what()<<std::endl;
+    return;
+  }
+  }
 
     
 void businessUser::importLicenceFromFile(const std::string &filePath) {

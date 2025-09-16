@@ -1,0 +1,1008 @@
+/* General reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: Arial, sans-serif;
+  background-color: #f0f2f5;
+}
+
+/* Center everything vertically and horizontally */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+  gap: 30px;
+  background-color: #ffffff;
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Header / Logo */
+.header {
+  display: flex;
+  flex-direction: column;
+ justify-content: center;
+  align-items: center;
+}
+.welcome-title {
+  font-size: 1.7rem;   /* smaller than default h1 */
+  font-weight: 500;    /* lighter font weight */
+  color: #1a0202;      /* subtle gray */
+  text-align: center;  /* center under logo */
+}
+
+.logo {
+  max-width: 220px;
+  height: auto;
+}
+
+/* Buttons container */
+.main {
+  display: flex;
+  justify-content: center; /* center the row */
+  align-items: center;
+  gap: 20px; /* space between buttons */
+  margin-top: 40px;
+}
+
+.btn {
+  width: 160px; /* all buttons same width */
+  padding: 12px 0;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  text-align: center;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+
+/* Inputs */
+input {
+  padding: 10px;
+  margin: 8px 0;
+  width: 220px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+/* Page title */
+h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 15px;
+}
+/* Container fills the screen and centers content */
+.dashboard-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    min-height: 100vh;
+    background-color: #f4f6f8;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Wrapper for the dashboard */
+.dashboard-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1400px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+
+/* Navbar styling */
+.navbar_menu {
+    height: 70px;
+    width: 100%;
+    background-color: #1f77ff;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    font-size: 20px;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Navbar left: user info */
+.navbar-left {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.user-name {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.user-id {
+    font-size: 14px;
+    opacity: 0.85;
+}
+
+
+
+.logout-button {
+    padding: 8px 18px;
+    background-color: #6a45f1e1;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.logout-button:hover {
+    background-color: #ea4b4b;
+    transform: scale(1.05);
+}
+
+/* Dashboard area with side menus and main content */
+.dashBoard {
+    display: flex;
+    width: 100%;
+    min-height: 600px;
+    background-color: #ffffff;
+}
+
+/* Left menu */
+.left_menu {
+    width: 220px;
+    background-color: #f7f9fc;
+    padding: 25px 15px;
+    border-right: 1px solid #e0e0e0;
+    display: flex;
+    margin-top: 30px;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Right menu */
+.right_menu {
+    width: 220px;
+    align-items: center;
+    background-color: #f7f9fc;
+    padding: 25px 15px;
+    border-left: 1px solid #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Main view */
+.main_view {
+    flex: 1;
+    padding: 30px;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* Optional: card style for sections in main view */
+.main_view .card {
+    background-color: #f9fafb;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease;
+}
+
+.main_view .card:hover {
+    transform: translateY(-3px);
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+    .dashBoard {
+        flex-direction: column;
+    }
+    .left_menu, .right_menu {
+        width: 100%;
+        border: none;
+        border-bottom: 1px solid #e0e0e0;
+    }
+     .main_view {
+        margin: 15px 0;
+    } 
+  
+
+    .navbar_menu {
+        flex-direction: column;
+        height: auto;
+        padding: 15px 20px;
+        gap: 10px;
+    }
+    .navbar-left {
+        justify-content: center;
+        gap: 10px;
+    }
+    .navbar-right {
+        display: flex;
+        justify-content: center;
+    }
+}
+.account-button {
+   padding: 8px 18px;
+    background-color: #6c5bf2;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+.search-button {
+   padding: 8px 18px;
+   background-color: #6c5bf2;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+.right_menu img {
+  width: 100px;         /* Fixed width */
+  height: 100px;        /* Fixed height */
+  border-radius: 50%;   /* Makes it circular */
+  object-fit: cover;    /* Crops image to fit inside container without stretching */
+  display: block;       /* Avoid inline spacing issues */
+}
+.input-field {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+.create-account {
+  background-color: #f9f9f9; /* light background */
+  border: 1px solid #ddd;    /* subtle border */
+  border-radius: 12px;       /* rounded corners */
+  padding: 30px 40px;        /* space inside */
+  max-width: 450px;          /* limits width */
+  margin: 50px auto;         /* center horizontally with some top margin */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* soft shadow */
+  display: flex;
+  flex-direction: column;    /* stack children vertically */
+  gap: 15px;                 /* space between elements */
+}
+
+.create-account .Title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.create-account p {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.create-account input,
+.create-account select {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  width: 100%;          /* fill container */
+  box-sizing: border-box;
+}
+
+.create-account button {
+  margin-top: 20px;
+  padding: 12px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: #007bff;  /* blue button */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.create-account button:hover {
+  background-color: #0056b3;
+}
+.search-accounts {
+  background-color: #f9f9f9; /* light background */
+  border: 1px solid #ddd;    /* subtle border */
+  border-radius: 12px;       /* rounded corners */
+  padding: 30px 40px;        /* inner spacing */
+  max-width: 450px;          /* limit width */
+  margin: 50px auto;         /* center horizontally with top margin */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* soft shadow */
+  display: flex;
+  flex-direction: column;    /* stack children vertically */
+  gap: 15px;                 /* spacing between elements */
+}
+
+.search-accounts h1 {
+  font-size: 1.6rem;
+  font-weight: 450;
+  /* text-align: center; */
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.search-accounts p {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.search-accounts input {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  width: 100%;          /* fill container */
+  box-sizing: border-box;
+}
+
+.search-accounts button {
+  margin-top: 20px;
+  padding: 12px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: #28a745;  /* green button */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.search-accounts button:hover {
+  background-color: #218838;
+}
+/* Wrapper for the default main menu */
+.main-default {
+  display: flex;               /* use flex for easy centering */
+  flex-direction: column;      /* stack text and image vertically */
+  align-items: center;         /* center horizontally */
+  justify-content: center;     /* center vertically */
+  min-height: 70vh;            /* take most of the main view height */
+  text-align: center;
+  gap: 15px;                   /* space between elements */
+  color: #555;                 /* subtle text color */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Welcome heading */
+.main-default h2 {
+  font-size: 2rem;
+  margin: 0;
+  font-weight: 600;
+}
+
+/* Subtext */
+.main-default p {
+  font-size: 1rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Guide image */
+.menuGuideImg {
+  width: 60%;                  /* responsive width */
+  max-width: 350px;
+  opacity: 0.7;                /* subtle effect */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* soft shadow */
+  transition: transform 0.3s ease; /* optional hover effect */
+}
+
+
+.account-profile {
+  
+  width: 100%;
+  max-width: 1000px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+
+}
+
+.account-profile h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.account-info {
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.account-info p {
+  margin: 8px 0;
+  font-size: 15px;
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.btn {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: #4a90e2;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background: #357ab8;
+}
+.signup-form {
+  width: 400px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: #f4f4f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+.signup-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.signup-form form div {
+  margin-bottom: 15px;
+}
+
+.signup-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
+
+.signup-form input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.signup-form input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.signup-form button {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.signup-form button:hover {
+  background-color: #0056b3;
+}
+/* Container for the accounts section */
+.accounts-section {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  margin-top: 20px;
+}
+
+/* Heading for the section */
+.accounts-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+/* Accounts table styling */
+.accounts-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.accounts-table th,
+.accounts-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.accounts-table th {
+  background-color: #4CAF50;
+  color: white;
+  font-weight: 600;
+}
+
+.accounts-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.accounts-table tr:hover {
+  background-color: #e8f5e9;
+}
+
+/* Action buttons in the table */
+.accounts-table button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.accounts-table button:hover {
+  background-color: #45a049;
+}
+
+/* Search input form */
+.search-accounts input[type="text"] {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 250px;
+  margin-right: 10px;
+  font-size: 1rem;
+}
+
+.search-accounts button[type="submit"] {
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  background-color: #2196F3;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.search-accounts button[type="submit"]:hover {
+  background-color: #1976D2;
+}
+
+/* Fallback text when no accounts are found */
+.accounts-section p {
+  margin-top: 15px;
+  font-style: italic;
+  color: #777;
+}
+.deposit-panel {
+  background-color: #f9f9f9; /* light panel background */
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 400px;
+  margin: 20px auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.deposit-panel h2 {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.deposit-panel form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.deposit-panel input[type="number"] {
+  padding: 10px 12px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.deposit-panel input[type="number"]:focus {
+  border-color: #007bff;
+}
+
+.deposit-panel button[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.deposit-panel button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+.withdraw-panel {
+  background-color: #f9f9f9; /* light panel background */
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 400px;
+  margin: 20px auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.withdraw-panel h2 {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.withdraw-panel form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.withdraw-panel input[type="number"] {
+  padding: 10px 12px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.withdraw-panel input[type="number"]:focus {
+  border-color: #007bff;
+}
+
+.withdraw-panel button[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.withdraw-panel button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+/* Button styling */
+.btn {
+  background-color: #4caf50;
+  color: white;
+  font-size: 16px;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #45a049;
+}
+
+/* Panel styling */
+.transaction-panel {
+  background: #fff;
+  padding: 20px 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  max-width: 400px;
+  margin: 20px auto;
+}
+
+.transaction-panel h2 {
+  margin-bottom: 15px;
+  font-size: 20px;
+  color: #333;
+  text-align: center;
+}
+
+/* Form styling */
+.transaction-panel form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.transaction-panel input,
+.transaction-panel select {
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: border 0.2s ease;
+}
+
+.transaction-panel input:focus,
+.transaction-panel select:focus {
+  border-color: #4caf50;
+}
+
+/* Submit & Cancel buttons */
+.transaction-panel button[type="submit"] {
+  background-color: #2196f3;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: background 0.3s ease;
+}
+
+.transaction-panel button[type="submit"]:hover {
+  background-color: #1976d2;
+}
+
+.transaction-panel button[type="button"] {
+  background-color: #f44336;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: background 0.3s ease;
+}
+
+.transaction-panel button[type="button"]:hover {
+  background-color: #d32f2f;
+}
+.transactions-panel {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin-top: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.transactions-panel h2 {
+  margin-bottom: 15px;
+  font-size: 1.5em;
+  color: #333;
+}
+
+.transactions-panel select {
+  margin-bottom: 15px;
+  padding: 5px 10px;
+  font-size: 1em;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.transaction-item {
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  padding: 12px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.transaction-item p {
+  margin: 0;
+  font-size: 0.95em;
+  color: #555;
+}
+
+.transaction-item button {
+  margin-top: 5px;
+  padding: 5px 10px;
+  font-size: 0.9em;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.transaction-item button:hover {
+  opacity: 0.85;
+}
+
+.transaction-item button:first-of-type {
+  background-color: #4caf50; /* Accept button */
+  color: #fff;
+  margin-right: 5px;
+}
+
+.transaction-item button:last-of-type {
+  background-color: #f44336; /* Decline button */
+  color: #fff;
+}
+
+.sent-transactions .transaction-item p:last-of-type {
+  font-weight: bold;
+  color: #333;
+}
+
+.transactions-panel .btn {
+  margin-top: 10px;
+  padding: 8px 15px;
+  background-color: #2196f3;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.transactions-panel .btn:hover {
+  opacity: 0.9;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px; /* space above table */
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 12px 20px; /* more space inside cells */
+  text-align: center;
+}
+
+th {
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+
+tr:nth-child(even) {
+  background-color: #fafafa; /* alternate row color */
+}
+
+/* Table styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-family: Arial, sans-serif;
+}
+
+thead {
+  background-color: #f0f0f0;
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+tr:hover {
+  background-color: #f1f7ff;
+}
+
+/* Button styling */
+button.btn {
+  padding: 6px 12px;
+  margin: 2px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button.btn:hover {
+  opacity: 0.9;
+}
+
+button.btn:active {
+  transform: scale(0.95);
+}
+
+/* Specific Accept/Decline buttons */
+button.btn-accept {
+  background-color: #4caf50; /* green */
+  color: white;
+}
+
+button.btn-decline {
+  background-color: #f44336; /* red */
+  color: white;
+}
+
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 16px 24px;
+  border-radius: 8px;
+  color: #fff;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  z-index: 1000;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.notification.success {
+  background-color: #4caf50;
+}
+
+.notification.error {
+  background-color: #f44336;
+}
+
+.notification button {
+  margin-left: 16px;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeout {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}

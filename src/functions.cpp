@@ -1,7 +1,10 @@
 #include "../include/functions.h"
-#include "../include/User.h"
 #include <ctime>
 #include <iostream>
+#include <string>
+
+
+ 
 
 std::string inputVal(const std::string& text) {
       std::string input;
@@ -55,7 +58,7 @@ int digitVal(const std::string& text) {
                 continue;
             }
         try {
-            number=stoi(input);
+           number=std::stoi(input);
         }
         catch(...) {
             std::cout<<"Error occured!"<<std::endl;
@@ -120,12 +123,5 @@ bool uniqueAccount( std::vector<User*> &users,int personalID,int accountNumber) 
 }
  return true;
 }
-bool uniqueUser( std::vector<User*> &users,int personalID) {
-    for(int i=0; i<users.size(); i++) {
-        if(users[i]->getPersonalID()==personalID) {
-              return false;      
-}
-}
- return true;
-}
+
 

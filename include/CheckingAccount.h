@@ -1,14 +1,15 @@
 #ifndef CHECKINGACCOUNT_H
 #define CHECKINGACCOUNT_H
 #include "Account.h"
-#include <vector>
+
 
 class CheckingAccount : public  Account
 {public:
-  bool createAccount(std::vector<User*> &users, int personalID)override;
-  void deposit(User *user,int accountNumber,double amount) override;
-  void withdraw(User *user,int accountNumber,double amount)override;
-  void printAccount(User *user,int accountNumber)override;
+  
+   std::shared_ptr<Account> createAccount(pqxx::connection &conn,std::shared_ptr<Account> account,int number)override;
+ double deposit(pqxx::connection &conn,double amount,int accountNumber) override;
+ double withdraw(pqxx::connection &conn,double amount,int accountNumber)override;
+  
 };
 
 

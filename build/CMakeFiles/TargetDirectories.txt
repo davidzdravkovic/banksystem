@@ -1,0 +1,3 @@
+C:/Users/User/banksystem/build/CMakeFiles/BankSystem.dir
+C:/Users/User/banksystem/build/CMakeFiles/edit_cache.dir
+C:/Users/User/banksystem/build/CMakeFiles/rebuild_cache.dir
